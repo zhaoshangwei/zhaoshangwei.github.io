@@ -1,42 +1,51 @@
----
-layout: page
-description: "Thinking will not overcome fear but action will."
----
+{\rtf1\ansi\ansicpg936\cocoartf2707
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 Times-Bold;\f2\ftech\fcharset77 Symbol;
+\f3\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c93333;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:200 }}
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 --- layout: page description: "Thinking will not overcome fear but action will." --- \{% for post in paginator.posts %\}\
+\pard\pardeftab720\sa298\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "file:///Users/zhao/Desktop/Blog/zhaoshangwei.github.io/%7B%7B%20post.url%20%7C%20prepend:%20site.baseurl%20%7D%7D"}}{\fldrslt 
+\f1\b\fs36 \cf3 \ul \ulc3 \strokec3 \{\{ post.title \}\}\ulnone \
+\pard\pardeftab720\partightenfactor0
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+\f0\b0\fs24 \cf3 \ul \ulc3 \{% if post.subtitle %\}
+\f1\b\fs28 \ulnone \
+\pard\pardeftab720\sa280\partightenfactor0
+\cf3 \ul \ulc3 \{\{ post.subtitle \}\}\ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0\fs24 \cf3 \ul \ulc3 \{% endif %\}\ulnone \
+\ul \{\{ post.content | strip_html | truncate:200 \}\}\ulnone \
+}}\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Posted by \{% if post.author %\}\{\{ post.author \}\}\{% else %\}\{\{ site.title \}\}\{% endif %\} on \{\{ post.date | date: "%B %-d, %Y" \}\}\
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\{% endfor %\} \{% if paginator.total_pages > 1 %\}\
+\{% if paginator.previous_page %\}\
+\pard\pardeftab720\partightenfactor0
+\ls1\ilvl0{\field{\*\fldinst{HYPERLINK "file:///Users/zhao/Desktop/Blog/zhaoshangwei.github.io/%7B%7B%20paginator.previous_page_path%20%7C%20prepend:%20site.baseurl%20%7C%20replace:%20'//',%20'/'%20%7D%7D"}}{\fldrslt 
+\f2 \cf3 \ul \ulc3 \strokec3 \uc0\u8592 
+\f0  Newer Posts}}\
+\pard\pardeftab720\partightenfactor0
+\cf0 \{% endif %\} \{% if paginator.next_page %\}\
+\pard\pardeftab720\partightenfactor0
+\ls2\ilvl0{\field{\*\fldinst{HYPERLINK "file:///Users/zhao/Desktop/Blog/zhaoshangwei.github.io/%7B%7B%20paginator.next_page_path%20%7C%20prepend:%20site.baseurl%20%7C%20replace:%20'//',%20'/'%20%7D%7D"}}{\fldrslt \cf3 \ul \ulc3 \strokec3 Older Posts 
+\f2 \uc0\u8594 }}\
+\pard\pardeftab720\partightenfactor0
+\cf0 \{% endif %\}\
+\{% endif %\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 \strokec2  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>\
+            <span id="busuanzi_container_site_pv">\uc0\u26412 \u31449 \u24635 \u35775 \u38382 \u37327 <span id="busuanzi_value_site_pv"></span>\u27425 </span>\
+}
