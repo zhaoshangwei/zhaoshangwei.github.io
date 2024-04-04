@@ -1,13 +1,13 @@
 # Site settings
-title: Charles Blog
-SEOTitle: Charles的博客 | Charles Blog
+title: Shangwei's Blog
+SEOTitle: Shangwei的博客 | Shangwei's Blog
 header-img: img/34999732.jpg
 email: zhaoshangwei1995@163.com
-description: "Every failure is leading towards success."
-keyword: "Charles, Charles Blog"
+description: "心有猛虎 细嗅蔷薇"
+keyword: 
 url: "http://zhaoshangwei.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/qiubaiying/qiubaiying.github.io.git" # you code repository
+github_repo: "https://github.com/zhaoshangwei/zhaoshangwei.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
