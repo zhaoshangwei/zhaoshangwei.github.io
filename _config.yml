@@ -28,6 +28,8 @@ github_username:    zhaoshangwei
 
 
 
+
+
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
@@ -113,3 +115,10 @@ friends: [
         href: "https://developer.apple.com/"
     }
 ]
+
+math:
+ engine: 'mathjax' # or 'katex'
+ mathjax:
+   # src: custom_mathjax_source
+   config:
+     # MathJax config
