@@ -1,0 +1,25 @@
+name: Jekyll build check
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build GitHub Pages
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Verify pages and existing posts
+        run: |
+          set -euo pipefail
+          for page in index.html about/index.html research/index.html projects/index.html writing/index.html life/index.html; do
+            test -s "_site/$page" || { echo "Missing $page"; exit 1; }
+          done
+          grep -q "Exploring" _site/index.html
+          grep -q "All Articles" _site/writing/index.html
+          echo "All main sections built successfully"
