@@ -1,0 +1,9 @@
+---
+layout: portfolio
+lang: en
+permalink: /en/writing/
+alternate: /writing/
+title: "Writing"
+description: "Technical notes and essays from Charles Zhao. Articles remain in their original languages."
+---
+<section class="page-intro"><div class="wrap"><p class="eyebrow">Writing / Articles</p><h1 class="page-title">Notes on learning,<br>building & thinking.</h1><p class="deck">A collection of technical notes and reflections from different stages of learning. Existing articles are intentionally kept in their original language.</p></div></section><section class="section"><div class="wrap"><div class="section-head"><h2 class="title">All Articles</h2><span>{{ site.posts | size }} posts</span></div><div class="entries">{% for post in site.posts %}<a class="entry" href="{{ post.url | relative_url }}"><time>{{ post.date | date: '%Y.%m.%d' }}</time><div><h3>{{ post.title | escape }}</h3><p>{{ post.subtitle | default: post.excerpt | strip_html | truncate:140 | escape }}</p></div><span class="arrow">↗</span></a>{% endfor %}</div></div></section>

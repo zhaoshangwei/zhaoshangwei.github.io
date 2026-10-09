@@ -1,11 +1,79 @@
 <!doctype html>
-<html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f8f5">
-<title>{% if page.title %}{{ page.title }} · {% endif %}Charles Zhao</title><meta name="description" content="{{ page.description | default: site.description | escape }}">
-<link rel="canonical" href="{{ page.url | absolute_url }}"><link rel="icon" href="{{ '/img/favicon.ico' | relative_url }}"><link rel="stylesheet" href="{{ '/css/portfolio.css' | relative_url }}"></head>
-<body><a class="skip" href="#main">跳转至正文</a>
-<header class="header"><div class="wrap head"><a class="logo" href="/">Charles Zhao<span>.</span></a>
-<nav class="desktop" aria-label="主导航"><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a><a href="/writing/">Writing</a><a href="/life/">Life</a></nav><a class="contact desktop" href="mailto:{{ site.email }}">Get in touch ↗</a>
-<details class="mobile"><summary>Menu ☰</summary><nav aria-label="移动端导航"><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a><a href="/writing/">Writing</a><a href="/life/">Life</a></nav></details>
-</div></header><main id="main">{{ content }}</main>
-<footer class="footer"><div class="wrap foot"><div><a class="logo" href="/">Charles Zhao<span>.</span></a><p>Curiosity, rigor, and a life beyond work.</p></div><div><a href="https://github.com/{{ site.github_username }}">GitHub ↗</a><a href="mailto:{{ site.email }}">Email ↗</a><a href="/feed.xml">RSS ↗</a></div></div><div class="wrap copyright">© {{ 'now' | date: '%Y' }} Charles Zhao · Hosted on GitHub Pages</div></footer></body></html>
+{% assign site_lang = page.lang | default: 'zh' %}
+<html lang="{{ site_lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f5">
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <meta name="author" content="Charles Zhao">
+  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Charles Zhao</title>
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {% if page.alternate %}
+    <link rel="alternate" hreflang="{{ site_lang }}" href="{{ page.url | absolute_url }}">
+    {% if site_lang == 'en' %}
+      <link rel="alternate" hreflang="zh" href="{{ page.alternate | absolute_url }}">
+      <link rel="alternate" hreflang="x-default" href="{{ page.alternate | absolute_url }}">
+    {% else %}
+      <link rel="alternate" hreflang="en" href="{{ page.alternate | absolute_url }}">
+      <link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}">
+    {% endif %}
+  {% endif %}
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="Charles Zhao">
+  <meta property="og:title" content="{{ page.title | default: 'Charles Zhao · Personal Website' | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="{{ '/img/favicon.ico' | relative_url }}">
+  <link rel="alternate" type="application/rss+xml" title="Charles Zhao · Writing" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/css/portfolio.css' | relative_url }}">
+  {% if page.url == '/' %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Charles Zhao","url":"{{ '/' | absolute_url }}","sameAs":["https://github.com/{{ site.github_username }}"],"knowsAbout":["Control Systems","Optimization","Operations Research","Artificial Intelligence"]}</script>
+  {% endif %}
+</head>
+<body>
+  <a class="skip" href="#main">{% if site_lang == 'en' %}Skip to content{% else %}跳转至正文{% endif %}</a>
+  <header class="header">
+    <div class="wrap head">
+      <a class="logo" href="{% if site_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="Charles Zhao Home">Charles Zhao<span>.</span></a>
+      {% assign root = '' %}
+      {% if site_lang == 'en' %}{% assign root = '/en' %}{% endif %}
+      <nav class="desktop" aria-label="{% if site_lang == 'en' %}Primary navigation{% else %}主导航{% endif %}">
+        <a href="{{ root | append: '/' | relative_url }}"{% if page.url == '/' or page.url == '/en/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="{{ root | append: '/about/' | relative_url }}"{% if page.url == '/about/' or page.url == '/en/about/' %} aria-current="page"{% endif %}>About</a>
+        <a href="{{ root | append: '/research/' | relative_url }}"{% if page.url == '/research/' or page.url == '/en/research/' %} aria-current="page"{% endif %}>Research</a>
+        <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.url == '/en/projects/' %} aria-current="page"{% endif %}>Projects</a>
+        <a href="{{ root | append: '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.url == '/en/writing/' %} aria-current="page"{% endif %}>Writing</a>
+        <a href="{{ root | append: '/life/' | relative_url }}"{% if page.url == '/life/' or page.url == '/en/life/' %} aria-current="page"{% endif %}>Life</a>
+      </nav>
+      <div class="header-actions">
+        {% if page.alternate %}
+        <a class="lang-switch" href="{{ page.alternate | relative_url }}" lang="{% if site_lang == 'en' %}zh{% else %}en{% endif %}" hreflang="{% if site_lang == 'en' %}zh{% else %}en{% endif %}" title="{% if site_lang == 'en' %}切换到中文{% else %}Switch to English{% endif %}">{% if site_lang == 'en' %}中文{% else %}EN{% endif %} <span aria-hidden="true">↗</span></a>
+        {% endif %}
+        <a class="contact desktop" href="mailto:{{ site.email }}">{% if site_lang == 'en' %}Contact{% else %}联系我{% endif %} ↗</a>
+      </div>
+      <details class="mobile">
+        <summary aria-label="{% if site_lang == 'en' %}Open navigation menu{% else %}展开导航菜单{% endif %}">Menu ☰</summary>
+        <nav aria-label="{% if site_lang == 'en' %}Mobile navigation{% else %}移动端导航{% endif %}">
+          <a href="{{ root | append: '/' | relative_url }}">Home</a>
+          <a href="{{ root | append: '/about/' | relative_url }}">About</a>
+          <a href="{{ root | append: '/research/' | relative_url }}">Research</a>
+          <a href="{{ root | append: '/projects/' | relative_url }}">Projects</a>
+          <a href="{{ root | append: '/writing/' | relative_url }}">Writing</a>
+          <a href="{{ root | append: '/life/' | relative_url }}">Life</a>
+          {% if page.alternate %}<a href="{{ page.alternate | relative_url }}">{% if site_lang == 'en' %}中文版{% else %}English Version{% endif %} ↗</a>{% endif %}
+        </nav>
+      </details>
+    </div>
+  </header>
+  <main id="main">{{ content }}</main>
+  <footer class="footer">
+    <div class="wrap foot">
+      <div><a class="logo" href="{% if site_lang == 'en' %}/en/{% else %}/{% endif %}">Charles Zhao<span>.</span></a><p>Curiosity, rigor, and a life beyond work.</p></div>
+      <div><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="mailto:{{ site.email }}">Email ↗</a><a href="{{ '/feed.xml' | relative_url }}">RSS ↗</a></div>
+    </div>
+    <div class="wrap copyright">© {{ 'now' | date: '%Y' }} Charles Zhao · Hosted on GitHub Pages</div>
+  </footer>
+</body>
+</html>
