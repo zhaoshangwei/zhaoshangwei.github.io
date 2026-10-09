@@ -1,0 +1,29 @@
+---
+layout: portfolio
+---
+<section class="page-intro project-intro">
+  <div class="wrap">
+    <a class="project-back" href="{% if page.lang == 'en' %}/en/projects/{% else %}/projects/{% endif %}">← {% if page.lang == 'en' %}All projects{% else %}全部项目{% endif %}</a>
+    <p class="eyebrow">{{ page.category | escape }} · {{ page.project_status | escape }}</p>
+    <h1 class="page-title">{{ page.title | escape }}</h1>
+    <p class="deck">{{ page.summary | escape }}</p>
+    {% if page.keywords %}<div class="topic-list">{% for keyword in page.keywords %}<span class="pill">{{ keyword | escape }}</span>{% endfor %}</div>{% endif %}
+  </div>
+</section>
+{% if page.hero_image %}
+<section class="project-art-section">
+  <div class="wrap"><figure class="project-art">
+    <img src="{{ page.hero_image | relative_url }}" width="640" height="360" alt="{{ page.hero_alt | escape }}">
+    <figcaption>{% if page.lang == 'en' %}Concept illustration for explanatory purposes. Not real experimental data or a software screenshot.{% else %}概念示意图，仅用于解释研究思路，并非实测数据或产品界面截图。{% endif %}</figcaption>
+  </figure></div>
+</section>
+{% endif %}
+<section class="section project-content-section">
+  <div class="reading-inner project-content post-body">{{ content }}</div>
+</section>
+<section class="section tinted">
+  <div class="wrap project-outro"><div><p class="eyebrow">{% if page.lang == 'en' %}About this page{% else %}关于公开边界{% endif %}</p>
+  <p class="deck">{% if page.lang == 'en' %}This page presents high-level concepts and publicly shareable engineering interests. It does not include confidential code, customer information or proprietary measurements.{% else %}本页仅展示可公开讨论的方法思路，不包含客户信息、商业机密、内部源码或非公开实验结果。{% endif %}</p></div>
+  <a class="cta" href="{% if page.lang == 'en' %}/en/projects/{% else %}/projects/{% endif %}">{% if page.lang == 'en' %}All projects{% else %}返回项目列表{% endif %} ↗</a>
+  </div>
+</section>

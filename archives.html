@@ -1,21 +1,20 @@
 ---
-layout: post
+layout: portfolio
 permalink: /archives/
-title: "Archives"
+title: Archives
+description: "按年份浏览 Charles Zhao 的全部历史博客文章。"
 ---
-<ul>
-  {% for post in site.posts %}
-
-    {% unless post.next %}
-      <h2>{{ post.date | date: '%Y年' }}</h2>
-    {% else %}
-      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-      {% if year != nyear %}
-        <h2>{{ post.date | date: '%Y年' }}</h2>
-      {% endif %}
-    {% endunless %}
-    
-    <li>{{ post.date | date:"%Y年%m月%d日：" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+<section class="page-intro"><div class="wrap"><p class="eyebrow">Writing / Archive</p><h1 class="page-title">Years of notes.</h1><p class="deck">这里保留所有已发表的历史文章。按原发布日期归档，原链接继续有效。</p></div></section>
+<section class="section"><div class="wrap">
+{% assign last_year = '' %}
+{% for post in site.posts %}
+{% assign year = post.date | date: '%Y' %}
+{% if year != last_year %}
+{% unless forloop.first %}</div></section>{% endunless %}
+<section class="archive-year"><div class="section-head"><h2 class="title">{{ year }}</h2></div><div class="entries">
+{% assign last_year = year %}
+{% endif %}
+<a class="entry" href="{{ post.url | relative_url }}"><time>{{ post.date | date: '%Y.%m.%d' }}</time><div><h3>{{ post.title | escape }}</h3><p>{{ post.subtitle | default: post.excerpt | strip_html | truncate:110 | escape }}</p></div><span class="arrow" aria-hidden="true">↗</span></a>
+{% if forloop.last %}</div></section>{% endif %}
+{% endfor %}
+</div></section>

@@ -1,11 +1,11 @@
 # Site settings
-title: Shangwei's Blog
-SEOTitle: Shangwei的博客 | Shangwei's Blog
+title: Charles Zhao
+SEOTitle: Charles Zhao | Personal Website
 header-img: img/fb5t0w3r5j3.jpg
 email: zhaoshangwei1995@163.com
-description: "心有猛虎 细嗅蔷薇"
+description: "Exploring complexity, creating intelligence, and documenting life."
 keyword: 
-url: "http://zhaoshangwei.github.io"          # your host, for absolute URL
+url: "https://zhaoshangwei.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/zhaoshangwei/zhaoshangwei.github.io.git" # you code repository
 
@@ -17,7 +17,13 @@ sidebar-avatar: /img/34999732.jpg      # use absolute URL, seeing it's used in b
 
 
 # SNS settings
-RSS: false
+RSS: true
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
 # weibo_username:     qiubaiying
 # zhihu_username:     qiubaiying
 github_username:    zhaoshangwei
@@ -41,7 +47,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 
 
 
@@ -76,10 +82,10 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: b50bf2b12b5338a1845e33832976fd68
+# Baidu tracker disabled by default
 
 # Google Analytics
-ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
+# Legacy Universal Analytics disabled
 ga_domain: auto            # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
 
 
@@ -94,7 +100,7 @@ featured-condition-size: 1              # 相同标签数量大于这个数，�
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
-service-worker: true
+service-worker: false
 
 
 

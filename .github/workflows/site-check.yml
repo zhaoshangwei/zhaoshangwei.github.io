@@ -1,0 +1,34 @@
+name: Jekyll build check
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build GitHub Pages
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Verify bilingual pages, SEO files and archived posts
+        shell: bash
+        run: |
+          set -euo pipefail
+          for page in index.html about/index.html research/index.html projects/index.html writing/index.html life/index.html en/index.html en/about/index.html en/research/index.html en/projects/index.html en/writing/index.html en/life/index.html projects/wafer-scheduling/index.html projects/process-optimization/index.html projects/production-scheduling/index.html projects/photo-archive/index.html en/projects/wafer-scheduling/index.html en/projects/process-optimization/index.html en/projects/production-scheduling/index.html en/projects/photo-archive/index.html; do
+            test -s "_site/$page" || { echo "Missing generated page: $page"; exit 1; }
+          done
+          for file in sitemap.xml robots.txt feed.xml img/portfolio/scheduling.svg img/portfolio/control.svg img/portfolio/archive.svg js/writing-search.js; do
+            test -s "_site/$file" || { echo "Missing asset: $file"; exit 1; }
+          done
+          grep -q 'lang="en"' _site/en/index.html
+          grep -q 'hreflang="en"' _site/index.html
+          grep -q 'href="/en/"' _site/index.html
+          grep -q 'data-article' _site/writing/index.html
+          grep -q '离散线性系统的模型预测控制' _site/writing/index.html
+          grep -q 'All Articles' _site/en/writing/index.html
+          grep -q '2024' _site/sitemap.xml
+          echo "All core pages, illustrations, bilingual routes and article archive checks passed"

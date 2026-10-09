@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Abstract scheduling timeline">
+<rect width="640" height="360" fill="#edf2f1"/><rect x="40" y="31" width="560" height="295" rx="12" fill="#fff" stroke="#d9e4e3"/>
+<g stroke="#e6ebeb" stroke-width="1"><path d="M125 70H565M125 135H565M125 200H565M125 265H565"/><path d="M125 48V287M215 48V287M305 48V287M395 48V287M485 48V287M565 48V287" stroke-dasharray="4 6"/></g>
+<g font-family="Arial,sans-serif" font-size="15" font-weight="600" fill="#667f8c"><text x="60" y="97">LL</text><text x="60" y="162">TM</text><text x="60" y="227">PM 1</text><text x="60" y="291">PM 2</text></g>
+<g fill="#b5cbd0"><rect x="134" y="78" width="72" height="31" rx="5"/><rect x="234" y="78" width="91" height="31" rx="5"/><rect x="357" y="78" width="80" height="31" rx="5"/><rect x="465" y="78" width="92" height="31" rx="5"/></g>
+<g fill="#557c90"><rect x="166" y="143" width="86" height="31" rx="5"/><rect x="283" y="143" width="83" height="31" rx="5"/><rect x="390" y="143" width="89" height="31" rx="5"/><rect x="501" y="143" width="58" height="31" rx="5"/></g>
+<g fill="#87a6b4"><rect x="203" y="208" width="120" height="31" rx="5"/><rect x="346" y="208" width="125" height="31" rx="5"/><rect x="490" y="208" width="70" height="31" rx="5"/></g>
+<g fill="#b2c9c3"><rect x="136" y="273" width="65" height="31" rx="5"/><rect x="222" y="273" width="116" height="31" rx="5"/><rect x="360" y="273" width="121" height="31" rx="5"/></g></svg>
