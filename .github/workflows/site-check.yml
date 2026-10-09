@@ -14,12 +14,21 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Verify pages and existing posts
+      - name: Verify bilingual pages, SEO files and archived posts
+        shell: bash
         run: |
           set -euo pipefail
-          for page in index.html about/index.html research/index.html projects/index.html writing/index.html life/index.html; do
-            test -s "_site/$page" || { echo "Missing $page"; exit 1; }
+          for page in index.html about/index.html research/index.html projects/index.html writing/index.html life/index.html en/index.html en/about/index.html en/research/index.html en/projects/index.html en/writing/index.html en/life/index.html; do
+            test -s "_site/$page" || { echo "Missing generated page: $page"; exit 1; }
           done
-          grep -q "Exploring" _site/index.html
-          grep -q "All Articles" _site/writing/index.html
-          echo "All main sections built successfully"
+          for file in sitemap.xml robots.txt feed.xml img/portfolio/scheduling.svg img/portfolio/control.svg img/portfolio/archive.svg js/writing-search.js; do
+            test -s "_site/$file" || { echo "Missing asset: $file"; exit 1; }
+          done
+          grep -q 'lang="en"' _site/en/index.html
+          grep -q 'hreflang="en"' _site/index.html
+          grep -q 'href="/en/"' _site/index.html
+          grep -q 'data-article' _site/writing/index.html
+          grep -q '离散线性系统的模型预测控制' _site/writing/index.html
+          grep -q 'All Articles' _site/en/writing/index.html
+          grep -q '2024' _site/sitemap.xml
+          echo "All core pages, illustrations, bilingual routes and article archive checks passed"
