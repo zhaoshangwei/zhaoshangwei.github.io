@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f8f5">
+<title>{% if page.title %}{{ page.title }} · {% endif %}Charles Zhao</title><meta name="description" content="{{ page.description | default: site.description | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}"><link rel="icon" href="{{ '/img/favicon.ico' | relative_url }}"><link rel="stylesheet" href="{{ '/css/portfolio.css' | relative_url }}"></head>
+<body><a class="skip" href="#main">跳转至正文</a>
+<header class="header"><div class="wrap head"><a class="logo" href="/">Charles Zhao<span>.</span></a>
+<nav class="desktop" aria-label="主导航"><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a><a href="/writing/">Writing</a><a href="/life/">Life</a></nav><a class="contact desktop" href="mailto:{{ site.email }}">Get in touch ↗</a>
+<details class="mobile"><summary>Menu ☰</summary><nav aria-label="移动端导航"><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a><a href="/writing/">Writing</a><a href="/life/">Life</a></nav></details>
+</div></header><main id="main">{{ content }}</main>
+<footer class="footer"><div class="wrap foot"><div><a class="logo" href="/">Charles Zhao<span>.</span></a><p>Curiosity, rigor, and a life beyond work.</p></div><div><a href="https://github.com/{{ site.github_username }}">GitHub ↗</a><a href="mailto:{{ site.email }}">Email ↗</a><a href="/feed.xml">RSS ↗</a></div></div><div class="wrap copyright">© {{ 'now' | date: '%Y' }} Charles Zhao · Hosted on GitHub Pages</div></footer></body></html>

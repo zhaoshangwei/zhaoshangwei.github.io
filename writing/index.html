@@ -1,0 +1,7 @@
+---
+layout: portfolio
+title: Writing
+permalink: /writing/
+description: "Charles Zhao 的公开技术文章与研究笔记。"
+---
+<section class="page-intro"><div class="wrap"><p class="eyebrow">Writing / 技术写作</p><h1 class="page-title">Notes on learning,<br>building & thinking.</h1><p class="deck">文章既记录技术知识，也记录一路走来的思考。旧博客文章及其 URL 保持不变，继续作为个人知识积累的一部分。</p><p><span class="pill">Control</span><span class="pill">Optimization</span><span class="pill">MATLAB</span><span class="pill">Python</span><span class="pill">Thoughts</span></p></div></section><section class="section"><div class="wrap"><div class="section-head"><h2 class="title">All Articles</h2><span>{{ site.posts | size }} posts</span></div><div class="entries">{% for post in site.posts %}<a class="entry" href="{{ post.url | relative_url }}"><time>{{ post.date | date: '%Y.%m.%d' }}</time><div><h3>{{ post.title | escape }}</h3><p>{{ post.subtitle | default: post.excerpt | strip_html | truncate:160 | escape }}</p></div><span class="arrow">↗</span></a>{% endfor %}</div><p><a class="text-link" href="/archives/">Original archive →</a></p></div></section>
