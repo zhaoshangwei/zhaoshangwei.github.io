@@ -7,6 +7,8 @@ layout: null
 {% for url in main_urls %}
   <url><loc>{{ url | absolute_url | xml_escape }}</loc></url>
 {% endfor %}
+{% assign project_urls = '/projects/wafer-scheduling/,/en/projects/wafer-scheduling/,/projects/process-optimization/,/en/projects/process-optimization/,/projects/production-scheduling/,/en/projects/production-scheduling/,/projects/photo-archive/,/en/projects/photo-archive/' | split: ',' %}
+{% for project_url in project_urls %}<url><loc>{{ project_url | absolute_url | xml_escape }}</loc></url>{% endfor %}
 {% for post in site.posts %}
   <url><loc>{{ post.url | absolute_url | xml_escape }}</loc><lastmod>{{ post.date | date: '%Y-%m-%d' }}</lastmod></url>
 {% endfor %}

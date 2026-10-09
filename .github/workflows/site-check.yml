@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for page in index.html about/index.html research/index.html projects/index.html writing/index.html life/index.html en/index.html en/about/index.html en/research/index.html en/projects/index.html en/writing/index.html en/life/index.html; do
+          for page in index.html about/index.html research/index.html projects/index.html writing/index.html life/index.html en/index.html en/about/index.html en/research/index.html en/projects/index.html en/writing/index.html en/life/index.html projects/wafer-scheduling/index.html projects/process-optimization/index.html projects/production-scheduling/index.html projects/photo-archive/index.html en/projects/wafer-scheduling/index.html en/projects/process-optimization/index.html en/projects/production-scheduling/index.html en/projects/photo-archive/index.html; do
             test -s "_site/$page" || { echo "Missing generated page: $page"; exit 1; }
           done
           for file in sitemap.xml robots.txt feed.xml img/portfolio/scheduling.svg img/portfolio/control.svg img/portfolio/archive.svg js/writing-search.js; do
