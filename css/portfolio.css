@@ -51,3 +51,24 @@
 .work-card .number{margin-bottom:14px}
 .work-card h3{min-height:2.3em}
 @media(max-width:740px){.header-actions{margin-left:auto;margin-right:5px}.lang-switch{padding:4px 8px}.work-card h3{min-height:0}.search-row{max-width:none}.work-art{height:200px}}
+
+/* Archive and responsive menu refinements */
+.tag-group{padding-bottom:58px;scroll-margin-top:30px}
+.tag-group+.tag-group{padding-top:52px;border-top:1px solid var(--line)}
+.archive-year{padding-bottom:54px}
+.archive-year+.archive-year{padding-top:42px;border-top:1px solid var(--line)}
+.topic-list a.pill:hover{background:#e9eff0;color:#2e5163}
+@media (min-width:741px) and (max-width:1060px){
+ .desktop{display:none}
+ .mobile{display:block;position:relative}
+ .mobile summary{cursor:pointer;font-size:13px;list-style:none}
+ .mobile nav{position:absolute;right:0;top:32px;background:white;border:1px solid var(--line);border-radius:8px;padding:13px;min-width:165px;z-index:8;display:grid;gap:8px;box-shadow:0 8px 30px #0001}
+ .header-actions{margin-left:auto}
+}
+@media (max-width:740px){
+ .header-actions{margin-left:auto}
+ .header .logo{font-size:23px}
+ .section-head{flex-wrap:wrap}
+ .tag-group{padding-bottom:30px}
+ .archive-year{padding-bottom:30px}
+}
