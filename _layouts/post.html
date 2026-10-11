@@ -2,13 +2,13 @@
 layout: portfolio
 ---
 <article class="reading">
-<header class="reading-header"><div class="reading-inner"><a class="back" href="/writing/">← All writing</a><p class="eyebrow">Writing / Notes</p><h1 class="page-title">{{ page.title | escape }}</h1>{% if page.subtitle %}<p class="deck">{{ page.subtitle | escape }}</p>{% endif %}<p class="post-meta">{{ page.date | date: '%Y.%m.%d' }} · {{ page.author | default: 'Charles Zhao' | escape }}</p></div></header>
+<header class="reading-header"><div class="reading-inner"><a class="back" href="/writing/">← {% if page.lang == 'en' %}All writing{% else %}全部文章{% endif %}</a><p class="eyebrow">{% if page.lang == 'en' %}Writing / Notes{% else %}写作 / 技术笔记{% endif %}</p><h1 class="page-title">{{ page.title | escape }}</h1>{% if page.subtitle %}<p class="deck">{{ page.subtitle | escape }}</p>{% endif %}<p class="post-meta">{{ page.date | date: '%Y.%m.%d' }} · {{ page.author | default: 'Charles Zhao' | escape }}</p></div></header>
 <div class="reading-inner">
-{% if page.catalog %}<details class="post-toc" open><summary>本文目录 / On this page</summary><nav id="post-toc" aria-label="文章目录"></nav></details>{% endif %}
+{% if page.catalog %}<details class="post-toc" open><summary>{% if page.lang == 'en' %}On this page{% else %}本文目录{% endif %}</summary><nav id="post-toc" aria-label="{% if page.lang == 'en' %}Table of contents{% else %}文章目录{% endif %}"></nav></details>{% endif %}
 <div id="post-content" class="post-body">{{ content }}</div>
 <div class="post-tags">{% for tag in page.tags %}<a href="/tags/">{{ tag | escape }}</a>{% endfor %}</div>
-<nav class="post-neighbors" aria-label="文章导航">{% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>{% endif %}{% if page.next.url %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>{% endif %}</nav>
-<a class="back" href="/writing/">← Back to Writing</a>
+<nav class="post-neighbors" aria-label="{% if page.lang == 'en' %}Article navigation{% else %}文章导航{% endif %}">{% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>{% endif %}{% if page.next.url %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>{% endif %}</nav>
+<a class="back" href="/writing/">← {% if page.lang == 'en' %}Back to Writing{% else %}返回文章列表{% endif %}</a>
 </div></article>
 {% if page.catalog %}<script src="/js/portfolio-toc.js" defer></script>{% endif %}
 {% if page.mathjax or page.catalog %}

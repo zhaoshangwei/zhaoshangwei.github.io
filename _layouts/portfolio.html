@@ -36,32 +36,34 @@
   <a class="skip" href="#main">{% if site_lang == 'en' %}Skip to content{% else %}跳转至正文{% endif %}</a>
   <header class="header">
     <div class="wrap head">
-      <a class="logo" href="{% if site_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="Charles Zhao Home">Charles Zhao<span>.</span></a>
+      <a class="logo" href="{% if site_lang == 'en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="{% if site_lang == 'en' %}Charles Zhao Home{% else %}Charles Zhao 首页{% endif %}">Charles Zhao<span>.</span></a>
       {% assign root = '' %}
       {% if site_lang == 'en' %}{% assign root = '/en' %}{% endif %}
       <nav class="desktop" aria-label="{% if site_lang == 'en' %}Primary navigation{% else %}主导航{% endif %}">
-        <a href="{{ root | append: '/' | relative_url }}"{% if page.url == '/' or page.url == '/en/' %} aria-current="page"{% endif %}>Home</a>
-        <a href="{{ root | append: '/about/' | relative_url }}"{% if page.url == '/about/' or page.url == '/en/about/' %} aria-current="page"{% endif %}>About</a>
-        <a href="{{ root | append: '/research/' | relative_url }}"{% if page.url == '/research/' or page.url == '/en/research/' %} aria-current="page"{% endif %}>Research</a>
-        <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.url == '/en/projects/' %} aria-current="page"{% endif %}>Projects</a>
-        <a href="{{ root | append: '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.url == '/en/writing/' %} aria-current="page"{% endif %}>Writing</a>
-        <a href="{{ root | append: '/life/' | relative_url }}"{% if page.url == '/life/' or page.url == '/en/life/' %} aria-current="page"{% endif %}>Life</a>
+        <a href="{{ root | append: '/' | relative_url }}"{% if page.url == '/' or page.url == '/en/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Home{% else %}首页{% endif %}</a>
+        <a href="{{ root | append: '/about/' | relative_url }}"{% if page.url == '/about/' or page.url == '/en/about/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}About{% else %}关于{% endif %}</a>
+        <a href="{{ root | append: '/research/' | relative_url }}"{% if page.url == '/research/' or page.url == '/en/research/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Research{% else %}研究{% endif %}</a>
+        <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.url == '/en/projects/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Projects{% else %}项目{% endif %}</a>
+        <a href="{{ root | append: '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.url == '/en/writing/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Writing{% else %}写作{% endif %}</a>
+        <a href="{{ root | append: '/life/' | relative_url }}"{% if page.url == '/life/' or page.url == '/en/life/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Life{% else %}生活{% endif %}</a>
       </nav>
+      {% assign switch_url = page.alternate %}
+      {% if page.layout == 'post' and site_lang != 'en' %}{% assign switch_url = '/en/writing/' %}{% endif %}
       <div class="header-actions">
-        {% if page.alternate %}
-        <a class="lang-switch" href="{{ page.alternate | relative_url }}" lang="{% if site_lang == 'en' %}zh{% else %}en{% endif %}" hreflang="{% if site_lang == 'en' %}zh{% else %}en{% endif %}" title="{% if site_lang == 'en' %}切换到中文{% else %}Switch to English{% endif %}">{% if site_lang == 'en' %}中文{% else %}EN{% endif %} <span aria-hidden="true">↗</span></a>
+        {% if switch_url %}
+        <a class="lang-switch" href="{{ switch_url | relative_url }}" lang="{% if site_lang == 'en' %}zh{% else %}en{% endif %}"{% if page.alternate %} hreflang="{% if site_lang == 'en' %}zh{% else %}en{% endif %}"{% endif %} title="{% if site_lang == 'en' %}切换到中文{% else %}Switch to English{% endif %}">{% if site_lang == 'en' %}中文{% else %}EN{% endif %} <span aria-hidden="true">↗</span></a>
         {% endif %}
         <a class="contact desktop" href="mailto:{{ site.email }}">{% if site_lang == 'en' %}Contact{% else %}联系我{% endif %} ↗</a>
       </div>
       <details class="mobile">
-        <summary aria-label="{% if site_lang == 'en' %}Open navigation menu{% else %}展开导航菜单{% endif %}">Menu ☰</summary>
+        <summary aria-label="{% if site_lang == 'en' %}Open navigation menu{% else %}展开导航菜单{% endif %}">{% if site_lang == 'en' %}Menu{% else %}菜单{% endif %} ☰</summary>
         <nav aria-label="{% if site_lang == 'en' %}Mobile navigation{% else %}移动端导航{% endif %}">
-          <a href="{{ root | append: '/' | relative_url }}">Home</a>
-          <a href="{{ root | append: '/about/' | relative_url }}">About</a>
-          <a href="{{ root | append: '/research/' | relative_url }}">Research</a>
-          <a href="{{ root | append: '/projects/' | relative_url }}">Projects</a>
-          <a href="{{ root | append: '/writing/' | relative_url }}">Writing</a>
-          <a href="{{ root | append: '/life/' | relative_url }}">Life</a>
+          <a href="{{ root | append: '/' | relative_url }}">{% if site_lang == 'en' %}Home{% else %}首页{% endif %}</a>
+          <a href="{{ root | append: '/about/' | relative_url }}">{% if site_lang == 'en' %}About{% else %}关于{% endif %}</a>
+          <a href="{{ root | append: '/research/' | relative_url }}">{% if site_lang == 'en' %}Research{% else %}研究{% endif %}</a>
+          <a href="{{ root | append: '/projects/' | relative_url }}">{% if site_lang == 'en' %}Projects{% else %}项目{% endif %}</a>
+          <a href="{{ root | append: '/writing/' | relative_url }}">{% if site_lang == 'en' %}Writing{% else %}写作{% endif %}</a>
+          <a href="{{ root | append: '/life/' | relative_url }}">{% if site_lang == 'en' %}Life{% else %}生活{% endif %}</a>
           {% if page.alternate %}<a href="{{ page.alternate | relative_url }}">{% if site_lang == 'en' %}中文版{% else %}English Version{% endif %} ↗</a>{% endif %}
         </nav>
       </details>
@@ -70,10 +72,10 @@
   <main id="main">{{ content }}</main>
   <footer class="footer">
     <div class="wrap foot">
-      <div><a class="logo" href="{% if site_lang == 'en' %}/en/{% else %}/{% endif %}">Charles Zhao<span>.</span></a><p>Curiosity, rigor, and a life beyond work.</p></div>
-      <div><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="mailto:{{ site.email }}">Email ↗</a><a href="{{ '/feed.xml' | relative_url }}">RSS ↗</a></div>
+      <div><a class="logo" href="{% if site_lang == 'en' %}/en/{% else %}/{% endif %}">Charles Zhao<span>.</span></a><p>{% if site_lang == 'en' %}Curiosity, rigor, and a life beyond work.{% else %}保持好奇，严谨思考，也认真生活。{% endif %}</p></div>
+      <div><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="mailto:{{ site.email }}">{% if site_lang == 'en' %}Email{% else %}邮件{% endif %} ↗</a><a href="{{ '/feed.xml' | relative_url }}">{% if site_lang == 'en' %}RSS{% else %}订阅{% endif %} ↗</a></div>
     </div>
-    <div class="wrap copyright">© {{ 'now' | date: '%Y' }} Charles Zhao · Hosted on GitHub Pages</div>
+    <div class="wrap copyright">© {{ 'now' | date: '%Y' }} Charles Zhao · {% if site_lang == 'en' %}Hosted on GitHub Pages{% else %}由 GitHub Pages 托管{% endif %}</div>
   </footer>
 </body>
 </html>
