@@ -5,11 +5,11 @@ permalink: /projects/process-optimization/
 alternate: /en/projects/process-optimization/
 title: "智能工艺优化与 Run-to-Run 控制"
 category: "Research / Control"
-project_status: "Research theme"
+project_status: "研究主题"
 summary: "围绕多变量耦合、漂移和工艺约束，探索物理与数据融合建模及逐批次闭环优化。"
 description: "围绕多变量耦合、漂移和工艺约束，探索物理与数据融合建模及逐批次闭环优化。"
 hero_image: /img/portfolio/control.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "概念示意图，不代表真实实验数据"
 keywords: ["Process Modeling", "Run-to-Run", "Optimization"]
 ---
 ## 背景与问题

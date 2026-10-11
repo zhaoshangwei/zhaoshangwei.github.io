@@ -9,7 +9,7 @@ project_status: "Research theme"
 summary: "Modeling equipment resources and wafer flow with discrete-event simulation to explore bottlenecks, throughput and feasible scheduling."
 description: "Modeling equipment resources and wafer flow with discrete-event simulation to explore bottlenecks, throughput and feasible scheduling."
 hero_image: /img/portfolio/scheduling.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "Abstract concept illustration; not measured data"
 keywords: ["Discrete-event Simulation", "Scheduling", "Digital Twin"]
 ---
 ## The problem

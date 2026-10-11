@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#f8f8f5">
   <meta name="description" content="{{ page.description | default: site.description | escape }}">
   <meta name="author" content="Charles Zhao">
-  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Charles Zhao</title>
+  <title>{% if page.url == '/' %}Charles Zhao · 个人主页{% elsif page.url == '/en/' %}Charles Zhao · Personal Website{% elsif page.title %}{{ page.title | escape }} · Charles Zhao{% else %}Charles Zhao{% endif %}</title>
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   {% if page.alternate %}
     <link rel="alternate" hreflang="{{ site_lang }}" href="{{ page.url | absolute_url }}">
@@ -21,7 +21,7 @@
   {% endif %}
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:site_name" content="Charles Zhao">
-  <meta property="og:title" content="{{ page.title | default: 'Charles Zhao · Personal Website' | escape }}">
+  <meta property="og:title" content="{% if page.url == '/' %}Charles Zhao · 个人主页{% elsif page.url == '/en/' %}Charles Zhao · Personal Website{% elsif page.title %}{{ page.title | escape }} · Charles Zhao{% else %}Charles Zhao{% endif %}">
   <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta name="twitter:card" content="summary">

@@ -5,11 +5,11 @@ permalink: /projects/production-scheduling/
 alternate: /en/projects/production-scheduling/
 title: "智能生产计划与动态排程"
 category: "Operations Research / Planning"
-project_status: "Research theme"
+project_status: "研究主题"
 summary: "面向多设备、多订单和动态扰动，探索约束规划、滚动优化与智能重排程。"
 description: "面向多设备、多订单和动态扰动，探索约束规划、滚动优化与智能重排程。"
 hero_image: /img/portfolio/scheduling.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "概念示意图，不代表真实实验数据"
 keywords: ["Constraint Programming", "Planning", "Rolling Horizon"]
 ---
 ## 背景与问题

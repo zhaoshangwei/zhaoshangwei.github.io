@@ -9,7 +9,7 @@ project_status: "Research theme"
 summary: "Exploring constraint programming and rolling-horizon decisions for multi-machine production systems under disruption."
 description: "Exploring constraint programming and rolling-horizon decisions for multi-machine production systems under disruption."
 hero_image: /img/portfolio/scheduling.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "Abstract concept illustration; not measured data"
 keywords: ["Constraint Programming", "Planning", "Rolling Horizon"]
 ---
 ## The problem

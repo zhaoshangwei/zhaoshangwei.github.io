@@ -9,7 +9,7 @@ project_status: "Research theme"
 summary: "Exploring physics-data modeling and run-to-run optimization for coupled, drifting processes under engineering constraints."
 description: "Exploring physics-data modeling and run-to-run optimization for coupled, drifting processes under engineering constraints."
 hero_image: /img/portfolio/control.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "Abstract concept illustration; not measured data"
 keywords: ["Process Modeling", "Run-to-Run", "Optimization"]
 ---
 ## The problem

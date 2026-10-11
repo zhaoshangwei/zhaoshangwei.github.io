@@ -5,11 +5,11 @@ permalink: /projects/photo-archive/
 alternate: /en/projects/photo-archive/
 title: "隐私优先的家庭影像归档"
 category: "Personal / Software"
-project_status: "In progress"
+project_status: "持续开发中"
 summary: "一个持续开发中的个人软件项目：关注跨端访问、原始媒体保存、家庭共享和细粒度隐私。"
 description: "一个持续开发中的个人软件项目：关注跨端访问、原始媒体保存、家庭共享和细粒度隐私。"
 hero_image: /img/portfolio/archive.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "概念示意图，不代表真实实验数据"
 keywords: ["Flutter", "Cross-platform", "Privacy"]
 ---
 ## 为什么做这个项目

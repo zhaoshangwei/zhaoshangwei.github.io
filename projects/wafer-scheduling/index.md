@@ -5,11 +5,11 @@ permalink: /projects/wafer-scheduling/
 alternate: /en/projects/wafer-scheduling/
 title: "晶圆调度与设备数字孪生"
 category: "Engineering / Scheduling"
-project_status: "Research theme"
+project_status: "研究主题"
 summary: "利用离散事件仿真描述设备资源与晶圆流转，研究节拍、产能瓶颈和约束下的调度决策。"
 description: "利用离散事件仿真描述设备资源与晶圆流转，研究节拍、产能瓶颈和约束下的调度决策。"
 hero_image: /img/portfolio/scheduling.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "概念示意图，不代表真实实验数据"
 keywords: ["Discrete-event Simulation", "Scheduling", "Digital Twin"]
 ---
 ## 背景与问题

@@ -9,7 +9,7 @@ project_status: "In progress"
 summary: "A personal software project in progress, focused on cross-platform access, original media preservation and thoughtful family privacy."
 description: "A personal software project in progress, focused on cross-platform access, original media preservation and thoughtful family privacy."
 hero_image: /img/portfolio/archive.svg
-hero_alt: "Abstract concept illustration"
+hero_alt: "Abstract concept illustration; not measured data"
 keywords: ["Flutter", "Cross-platform", "Privacy"]
 ---
 ## Why I am building it
