@@ -32,6 +32,8 @@ REQUIRED = [
 missing = [p for p in REQUIRED if not (SITE / p).is_file()]
 if missing:
     raise SystemExit("Missing required generated files:\n  " + "\n  ".join(missing))
+if (SITE / "WEBSITE_GUIDE/index.html").exists():
+    raise SystemExit("Internal maintenance guide should not be published as a website page")
 
 class PageParser(HTMLParser):
     def __init__(self):

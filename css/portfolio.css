@@ -88,3 +88,8 @@
 .project-outro .cta{white-space:nowrap}
 .project-list-card{display:block}
 @media(max-width:740px){.project-art-section{padding-bottom:35px}.project-outro{display:block}.project-intro{padding-top:47px}.project-outro .cta{margin-top:15px}}
+
+/* Tablet refinement: keep three-up content cards readable before the mobile breakpoint. */
+@media (min-width:741px) and (max-width:900px){
+  .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
