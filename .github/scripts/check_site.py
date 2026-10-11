@@ -148,11 +148,11 @@ expected_zh = ["首页", "关于", "研究", "项目", "写作", "生活"]
 expected_en = ["Home", "About", "Research", "Projects", "Writing", "Life"]
 if not zh.desktop_nav or zh.desktop_nav[0] != expected_zh:
     raise SystemExit(f"Chinese desktop navigation mismatch: {zh.desktop_nav}")
-if not zh.mobile_nav or zh.mobile_nav[0] != expected_zh:
+if not zh.mobile_nav or zh.mobile_nav[0][:6] != expected_zh or zh.mobile_nav[0][6:] != ["English Version ↗"]:
     raise SystemExit(f"Chinese mobile navigation mismatch: {zh.mobile_nav}")
 if not en.desktop_nav or en.desktop_nav[0] != expected_en:
     raise SystemExit(f"English desktop navigation mismatch: {en.desktop_nav}")
-if not en.mobile_nav or en.mobile_nav[0] != expected_en:
+if not en.mobile_nav or en.mobile_nav[0][:6] != expected_en or en.mobile_nav[0][6:] != ["中文版 ↗"]:
     raise SystemExit(f"English mobile navigation mismatch: {en.mobile_nav}")
 
 zh_html = (SITE / "index.html").read_text(encoding="utf-8")
