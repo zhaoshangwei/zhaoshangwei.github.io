@@ -58,7 +58,23 @@ try {
       body: document.body.scrollWidth
     }));
     if (dimensions.document > dimensions.viewport + 1 || dimensions.body > dimensions.viewport + 1) {
-      failures.push(test.name + ": horizontal overflow " + JSON.stringify(dimensions));
+      const offenders = await page.evaluate(() => Array.from(document.querySelectorAll("body *")).map(el => {
+        const rect = el.getBoundingClientRect();
+        return {
+          tag: el.tagName.toLowerCase(),
+          id: el.id || "",
+          className: typeof el.className === "string" ? el.className : "",
+          text: (el.innerText || "").trim().slice(0, 70),
+          left: Math.round(rect.left),
+          right: Math.round(rect.right),
+          width: Math.round(rect.width),
+          scrollWidth: el.scrollWidth,
+          clientWidth: el.clientWidth
+        };
+      }).filter(el => el.right > window.innerWidth + 1 || el.left < -1)
+        .sort((a, b) => b.right - a.right)
+        .slice(0, 8));
+      failures.push(test.name + ": horizontal overflow " + JSON.stringify({ ...dimensions, offenders }));
     }
 
     const brokenImages = await page.locator("img").evaluateAll(images =>
