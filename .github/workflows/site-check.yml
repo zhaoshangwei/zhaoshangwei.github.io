@@ -16,10 +16,14 @@ jobs:
           destination: ./_site
       - name: Verify generated site and internal routes
         run: python3 .github/scripts/check_site.py _site
-      - name: Install Playwright and Chromium
+      - name: Install Playwright and Chromium in an isolated directory
         run: |
-          npm install --no-save --package-lock=false --no-audit --no-fund playwright@1.55.0
+          mkdir -p /tmp/portfolio-playwright
+          cd /tmp/portfolio-playwright
+          npm init -y
+          npm install --no-audit --no-fund playwright@1.55.0
           npx playwright install --with-deps chromium
+          ln -s /tmp/portfolio-playwright/node_modules "$GITHUB_WORKSPACE/node_modules"
       - name: Run responsive browser smoke tests
         run: |
           mkdir -p artifacts/preview
