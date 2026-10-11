@@ -25,20 +25,20 @@ try {
 
     const response = await page.goto(baseURL + test.route, { waitUntil: "networkidle", timeout: 30000 });
     if (!response || !response.ok()) {
-      failures.push(\`${test.name}: route returned ${response?.status() ?? "no response"}\`);
+      failures.push(test.name + ": route returned " + (response ? response.status() : "no response"));
       await page.close();
       continue;
     }
 
     const actualLang = await page.locator("html").getAttribute("lang");
-    if (actualLang !== test.lang) failures.push(\`${test.name}: expected lang=${test.lang}, got ${actualLang}\`);
+    if (actualLang !== test.lang) failures.push(test.name + ": expected lang=" + test.lang + ", got " + actualLang);
 
     if (test.mode === "desktop") {
-      if (!(await page.locator("nav.desktop").isVisible())) failures.push(\`${test.name}: desktop navigation is hidden\`);
-      if (await page.locator(".mobile summary").isVisible()) failures.push(\`${test.name}: mobile menu appears on desktop\`);
+      if (!(await page.locator("nav.desktop").isVisible())) failures.push(test.name + ": desktop navigation is hidden");
+      if (await page.locator(".mobile summary").isVisible()) failures.push(test.name + ": mobile menu appears on desktop");
     } else {
-      if (!(await page.locator(".mobile summary").isVisible())) failures.push(\`${test.name}: mobile menu trigger is hidden\`);
-      if (!(await page.locator(".lang-switch").isVisible())) failures.push(\`${test.name}: language switch is hidden\`);
+      if (!(await page.locator(".mobile summary").isVisible())) failures.push(test.name + ": mobile menu trigger is hidden");
+      if (!(await page.locator(".lang-switch").isVisible())) failures.push(test.name + ": language switch is hidden");
     }
 
     await page.evaluate(async () => {
@@ -58,56 +58,56 @@ try {
       body: document.body.scrollWidth
     }));
     if (dimensions.document > dimensions.viewport + 1 || dimensions.body > dimensions.viewport + 1) {
-      failures.push(\`${test.name}: horizontal overflow ${JSON.stringify(dimensions)}\`);
+      failures.push(test.name + ": horizontal overflow " + JSON.stringify(dimensions));
     }
 
     const brokenImages = await page.locator("img").evaluateAll(images =>
       images.filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src)
     );
-    if (brokenImages.length) failures.push(\`${test.name}: broken images ${brokenImages.join(", ")}\`);
+    if (brokenImages.length) failures.push(test.name + ": broken images " + brokenImages.join(", "));
 
-    await page.screenshot({ path: path.join(outDir, \`${test.name}.png\`), fullPage: true });
+    await page.screenshot({ path: path.join(outDir, test.name + ".png"), fullPage: true });
 
     if (test.mode === "mobile-menu") {
       await page.locator(".mobile summary").click();
-      if (!(await page.locator(".mobile nav").isVisible())) failures.push(\`${test.name}: mobile menu did not open\`);
+      if (!(await page.locator(".mobile nav").isVisible())) failures.push(test.name + ": mobile menu did not open");
       const navLabels = await page.locator(".mobile nav a").allTextContents();
-      if (navLabels.length < 6) failures.push(\`${test.name}: expected at least six mobile navigation links\`);
+      if (navLabels.length < 6) failures.push(test.name + ": expected at least six mobile navigation links");
       const openMenuDimensions = await page.evaluate(() => ({
         viewport: document.documentElement.clientWidth,
         document: document.documentElement.scrollWidth
       }));
       if (openMenuDimensions.document > openMenuDimensions.viewport + 1) {
-        failures.push(\`${test.name}: opening mobile menu causes horizontal overflow\`);
+        failures.push(test.name + ": opening mobile menu causes horizontal overflow");
       }
     }
 
     if (test.mode === "search") {
       const search = page.locator("#article-search");
       if (!(await search.isVisible())) {
-        failures.push(\`${test.name}: article search input is missing\`);
+        failures.push(test.name + ": article search input is missing");
       } else {
         await search.fill("模型预测控制");
         const visibleResults = await page.locator("[data-article]:visible").count();
-        if (visibleResults < 1) failures.push(\`${test.name}: article search returned no matching results\`);
+        if (visibleResults < 1) failures.push(test.name + ": article search returned no matching results");
         const countText = await page.locator("#search-count").textContent();
         if (!countText || !countText.includes(String(visibleResults))) {
-          failures.push(\`${test.name}: search result counter did not update (${countText})\`);
+          failures.push(test.name + ": search result counter did not update (" + countText + ")");
         }
       }
     }
 
-    if (pageErrors.length) failures.push(\`${test.name}: browser errors ${pageErrors.join(" | ")}\`);
+    if (pageErrors.length) failures.push(test.name + ": browser errors " + pageErrors.join(" | "));
     await page.close();
-    console.log(\`PASS ${test.name} (${test.viewport.width}x${test.viewport.height})\`);
+    console.log("PASS " + test.name + " (" + test.viewport.width + "x" + test.viewport.height + ")");
   }
 } finally {
   await browser.close();
 }
 
 if (failures.length) {
-  console.error("\\nBrowser QA failures:\\n- " + failures.join("\\n- "));
+  console.error("\nBrowser QA failures:\n- " + failures.join("\n- "));
   process.exitCode = 1;
 } else {
-  console.log(\`Browser QA passed for ${cases.length} pages/viewports. Screenshots: ${outDir}\`);
+  console.log("Browser QA passed for " + cases.length + " pages/viewports. Screenshots: " + outDir);
 }
