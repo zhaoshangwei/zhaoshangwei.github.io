@@ -93,3 +93,9 @@
 @media (min-width:741px) and (max-width:900px){
   .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Keep long archived titles and unbroken legacy URLs inside narrow article rows. */
+.entries{min-width:0}
+.entry{width:100%;min-width:0;box-sizing:border-box}
+.entry>div{min-width:0}
+.entry h3,.entry p{overflow-wrap:anywhere}
