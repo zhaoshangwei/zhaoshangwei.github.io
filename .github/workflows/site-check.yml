@@ -1,11 +1,11 @@
-name: Jekyll build check
+name: Jekyll build and browser QA
 on:
   pull_request:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  build:
+  build-and-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,3 +16,26 @@ jobs:
           destination: ./_site
       - name: Verify generated site and internal routes
         run: python3 .github/scripts/check_site.py _site
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save --package-lock=false --no-audit --no-fund playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run responsive browser smoke tests
+        run: |
+          mkdir -p artifacts/preview
+          python3 -m http.server 4173 --directory _site >/tmp/portfolio-preview-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:4173/ >/dev/null
+          node .github/scripts/visual_smoke.mjs artifacts/preview
+      - name: Upload desktop, tablet and mobile screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-preview-\${{ github.run_number }}
+          path: artifacts/preview/*.png
+          if-no-files-found: warn
