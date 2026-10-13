@@ -11,7 +11,8 @@ layout: portfolio
 <a class="back" href="/writing/">← {% if page.lang == 'en' %}Back to Writing{% else %}返回文章列表{% endif %}</a>
 </div></article>
 {% if page.catalog %}<script src="/js/portfolio-toc.js" defer></script>{% endif %}
-{% if page.mathjax or page.catalog %}
+{% comment %}Load MathJax for archived posts: older posts often contain math without setting front matter flags.{% endcomment %}
+{% if page.mathjax != false %}
 <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 {% endif %}
