@@ -50,7 +50,7 @@
         <a href="{{ root | append: '/' | relative_url }}"{% if page.url == '/' or page.url == '/en/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Home{% else %}首页{% endif %}</a>
         <a href="{{ root | append: '/about/' | relative_url }}"{% if page.url == '/about/' or page.url == '/en/about/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}About{% else %}关于{% endif %}</a>
         <a href="{{ root | append: '/research/' | relative_url }}"{% if page.url == '/research/' or page.url == '/en/research/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Research{% else %}研究{% endif %}</a>
-        <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.url == '/en/projects/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Projects{% else %}项目{% endif %}</a>
+        <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Projects{% else %}项目{% endif %}</a>
         <a href="{{ root | append: '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.url == '/en/writing/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Writing{% else %}写作{% endif %}</a>
         <a href="{{ root | append: '/life/' | relative_url }}"{% if page.url == '/life/' or page.url == '/en/life/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Life{% else %}生活{% endif %}</a>
       </nav>
@@ -68,7 +68,7 @@
           <a href="{{ root | append: '/' | relative_url }}"{% if page.url == '/' or page.url == '/en/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Home{% else %}首页{% endif %}</a>
           <a href="{{ root | append: '/about/' | relative_url }}"{% if page.url == '/about/' or page.url == '/en/about/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}About{% else %}关于{% endif %}</a>
           <a href="{{ root | append: '/research/' | relative_url }}"{% if page.url == '/research/' or page.url == '/en/research/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Research{% else %}研究{% endif %}</a>
-          <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url == '/projects/' or page.url == '/en/projects/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Projects{% else %}项目{% endif %}</a>
+          <a href="{{ root | append: '/projects/' | relative_url }}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Projects{% else %}项目{% endif %}</a>
           <a href="{{ root | append: '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.url == '/en/writing/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Writing{% else %}写作{% endif %}</a>
           <a href="{{ root | append: '/life/' | relative_url }}"{% if page.url == '/life/' or page.url == '/en/life/' %} aria-current="page"{% endif %}>{% if site_lang == 'en' %}Life{% else %}生活{% endif %}</a>
           {% if page.alternate %}<a href="{{ page.alternate | relative_url }}">{% if site_lang == 'en' %}中文版{% else %}English Version{% endif %} ↗</a>{% endif %}
