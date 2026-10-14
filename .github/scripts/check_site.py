@@ -196,4 +196,20 @@ for route in [
     if route not in locs:
         raise SystemExit("Missing sitemap URL: " + route)
 
+# Regression checks for social previews, mobile semantics and archived math.
+for rel in ["index.html", "en/index.html", "projects/wafer-scheduling/index.html"]:
+    html = (SITE / rel).read_text(encoding="utf-8")
+    if 'property="og:image"' not in html or '/img/34999732.jpg' not in html:
+        raise SystemExit(f"Missing social preview image metadata: {rel}")
+    if 'name="twitter:image"' not in html:
+        raise SystemExit(f"Missing Twitter image metadata: {rel}")
+    if 'aria-current="page"' not in html:
+        raise SystemExit(f"Missing current-page navigation semantics: {rel}")
+if not (SITE / "img/34999732.jpg").is_file():
+    raise SystemExit("Social preview asset is missing")
+for post_file in post_pages:
+    html = post_file.read_text(encoding="utf-8")
+    if "mathjax@3/es5/tex-chtml.js" not in html:
+        raise SystemExit(f"Archived article missing MathJax: {post_file.relative_to(SITE)}")
+
 print(f"Site QA passed: {len(REQUIRED)} required files, {len(CORE)} page routes, bilingual navigation, legacy URL, article archive and XML sitemap.")
