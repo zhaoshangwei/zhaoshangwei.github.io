@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Conceptual feedback control plot">
+<rect width="640" height="360" fill="#edf2f1"/><rect x="38" y="30" width="562" height="295" rx="12" fill="#fff" stroke="#dbe5e4"/><g stroke="#e7eded" stroke-width="1"><path d="M74 93H562M74 147H562M74 201H562M74 255H562"/><path d="M74 80V268M172 80V268M270 80V268M368 80V268M466 80V268M562 80V268" stroke-dasharray="4 6"/></g>
+<g font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#667e8a"><text x="75" y="64">CONTROL RESPONSE</text><text x="75" y="290">ITERATION →</text></g>
+<path d="M76 250C110 245 115 152 154 148S195 221 237 194S291 114 338 142S391 187 443 140S510 150 558 120" fill="none" stroke="#557c90" stroke-width="4" stroke-linecap="round"/>
+<path d="M76 186C172 186 210 186 310 186 405 186 460 186 558 186" fill="none" stroke="#a4bbc2" stroke-width="2.5" stroke-dasharray="8 6"/>
+<g fill="#fff" stroke="#557c90" stroke-width="3"><circle cx="154" cy="148" r="6"/><circle cx="237" cy="194" r="6"/><circle cx="338" cy="142" r="6"/><circle cx="443" cy="140" r="6"/></g></svg>
